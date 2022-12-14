@@ -1,29 +1,50 @@
-#Importar as bibliotecas
-
 import streamlit as st
 import pandas as pd
 import numpy as np
+import base64
 
-#Criar título para o App
+st.title("Web App Football Data")
 
-st.title("Aplicativo Dados Esportivos Luciano Félix Macedo")
+st.sidebar.header("Leagues")
+selected_league = st.sidebar.selectbox('League',['England','Germany','Italy','Spain','France'])
 
-#Criação da barra lateral
+st.sidebar.header("Season")
+selected_season = st.sidebar.selectbox('Season', ['2021/2022','2020/2021','2019/2020'])
 
-st.sidebar.header("Liga")
-selected_liga = st.sidebar.selectbox('Liga',['Alemanha','Bélgica','Escócia','Espanha','França','Grécia','Holanda','Inglaterra','Italia','Portugal','Turquia']
-
-st.sidebar.header("Temporada")
-selected_temporada = st.sidebar.selectbox('Temporada',['2023/2022','2022/2021','2021/2020','2020/2019','2019/2018','2018/2017','2017/2016','2016/2015','2015/2014','2014/2013']
-                                       
-#Fazer webscraping Footbal Data
-
-
+# WebScraping Football Data
+def load_data(league, season):
   
-def load_data(liga, temporada):
-  url = "https://www.football-data.co.uk/mmz4281/"+temporada+"/"+liga+".csv"
+  if selected_league == 'England':
+    league = 'E0'
+  if selected_league == 'Germany':
+    league = 'D1'
+  if selected_league == 'Italy':
+    league = 'I1'
+  if selected_league == 'Spain':
+    league = 'SP1'
+  if selected_league == 'France':
+    league = 'F1'
+   
+  if selected_season == '2021/2022':
+    season = '2122'
+  if selected_season == '2020/2021':
+    season = '2021'
+  if selected_season == '2019/2020':
+    season = '1920'
+    
+  url = "https://www.football-data.co.uk/mmz4281/"+season+"/"+league+".csv"
   data = pd.read_csv(url)
   return data
 
-df - load_data(selected_liga, selected_temporada)
+df = load_data(selected_league, selected_season)
 
+st.subheader("Dataframe: "+selected_league)
+st.dataframe(df)
+
+def filedownload(df):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:file/csv;base64,{b64}" download="Base_de_Dados.csv">Download CSV File</a>'
+    return href
+
+st.markdown(filedownload(df), unsafe_allow_html=True)
