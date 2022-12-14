@@ -9,7 +9,7 @@ st.sidebar.header("Liga")
 selected_league = st.sidebar.selectbox('Liga',['Alemanha 1','Alemanha 2','Bélgica','Escócia 1','Escócia 2','Escócia 3','Escócia 4','Espanha 1','Espanha 2','França 1','França 2','Grécia','Holanda','Inglaterra 1','Inglaterra 2','Inglaterra 3','Inglaterra 4','Inglaterra 5','Italia 1','Italia 2','Portugal','Turquia'])
 
 st.sidebar.header("Temporada")
-selected_season = st.sidebar.selectbox('Temporada', ['2021/2022','2020/2021','2019/2020'])
+selected_season = st.sidebar.selectbox('Temporada', ['2022/2023','2021/2022','2020/2021','2019/2020','2018/2019','2017/2018','2016/2017','2015/2016','2014/2015','2013/2014'])
 
 # WebScraping Football Data
 def load_data(league, season):
