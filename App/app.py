@@ -96,3 +96,5 @@ def filedownload(df):
     return href
 
 st.markdown(filedownload(df), unsafe_allow_html=True)
+
+st.title("App Análise Luciano Félix Macedo")
