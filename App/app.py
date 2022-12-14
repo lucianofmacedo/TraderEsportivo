@@ -6,7 +6,7 @@ import base64
 st.title("App Análise Luciano Félix Macedo")
 
 st.sidebar.header("Liga")
-selected_league = st.sidebar.selectbox('Liga',['England','Germany','Italy','Spain','France'])
+selected_league = st.sidebar.selectbox('Liga',['Alemanha','Bélgica','Escócia','Espanha','França','Grécia','Holanda','Inglaterra','Italia','Portugal','Turquia'])
 
 st.sidebar.header("Temporada")
 selected_season = st.sidebar.selectbox('Temporada', ['2021/2022','2020/2021','2019/2020'])
@@ -38,7 +38,7 @@ def load_data(league, season):
 
 df = load_data(selected_league, selected_season)
 
-st.subheader("Dataframe: "+selected_league)
+st.subheader("Liga: "+selected_league)
 st.dataframe(df)
 
 def filedownload(df):
