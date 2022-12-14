@@ -5,10 +5,10 @@ import base64
 
 st.title("App Análise Luciano Félix Macedo")
 
-st.sidebar.header("Leagues")
+st.sidebar.header("Liga")
 selected_league = st.sidebar.selectbox('League',['England','Germany','Italy','Spain','France'])
 
-st.sidebar.header("Season")
+st.sidebar.header("Temporada")
 selected_season = st.sidebar.selectbox('Season', ['2021/2022','2020/2021','2019/2020'])
 
 # WebScraping Football Data
